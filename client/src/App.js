@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+
 class App extends Component {
   componentDidMount() {
-    this.socket = new WebSocket('ws://localhost:8080');
+    this.socket = new WebSocket(`ws://${process.env.REACT_APP_SERVER_HOST}`);
 
     // Listen for messages
     this.socket.addEventListener('message', async event => {
