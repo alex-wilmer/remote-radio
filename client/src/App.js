@@ -6,12 +6,12 @@ class App extends React.Component {
     this.socket = new WebSocket(`ws://${process.env.REACT_APP_SERVER_HOST}`);
 
     // Connection opened
-    this.socket.addEventListener('open', function (event) {
+    this.socket.addEventListener('open', (event) => {
         this.socket.send('Hello Server!');
     });
 
     // Listen for messages
-    this.socket.addEventListener('message', function (event) {
+    this.socket.addEventListener('message', (event) => {
         console.log('Message from server ', event.data);
     });
   }
