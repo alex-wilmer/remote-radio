@@ -12,12 +12,22 @@ class App extends Component {
     });
   }
 
+  ping = async () => {
+    const audioCtx = new AudioContext()
+    const response = await fetch('/hi_everybody.wav')
+    const arrayBuffer = await response.arrayBuffer()
+    const audioBuffer = await audioCtx.decodeAudioData(arrayBuffer)
+
+    const source = audioCtx.createBufferSource()
+    source.buffer = audioBuffer
+    source.connect(audioCtx.destination)
+    source.start()
+  }
+
   render() {
     return (
       <div className="App">
-        <button onClick={() => {
-          this.socket.send('poke!')
-        }}>
+        <button onClick={this.ping}>
           poke!
         </button>
       </div>
