@@ -4,7 +4,7 @@ import './App.css';
 
 class App extends Component {
   componentDidMount() {
-    this.socket = new WebSocket('ws://localhost:8080');
+    this.socket = new WebSocket(process.env.REACT_APP_WS || `ws://localhost:8080`);
 
     // Listen for messages
     this.socket.addEventListener('message', async event => {
