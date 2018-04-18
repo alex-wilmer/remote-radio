@@ -3,7 +3,7 @@ import React from 'react'
 class App extends React.Component {
   componentDidMount() {
     // Create WebSocket connection.
-    this.socket = new WebSocket(`ws://${process.env.SERVER_HOST}`);
+    this.socket = new WebSocket(`ws://${process.env.REACT_APP_SERVER_HOST}`);
 
     // Connection opened
     this.socket.addEventListener('open', function (event) {
@@ -20,7 +20,7 @@ class App extends React.Component {
       <button onClick={() => {
         this.socket.send('hey i clicked a button')
       }}>
-      click me 
+      click me
     </button>
 
       Hello App class</h1>
